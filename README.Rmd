@@ -1,0 +1,54 @@
+---
+output: github_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# kenyaCounties
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/yourusername/kenyaCounties/workflows/R-CMD-check/badge.svg)](https://github.com/yourusername/kenyaCounties/actions)
+<!-- badges: end -->
+
+An R package providing comprehensive data about Kenya's 47 county governments.
+
+## Installation
+
+```{r, eval = FALSE}
+# Install from GitHub
+devtools::install_github("ymutua/kenyaCounties")
+
+# Install from CRAN (when available)
+install.packages("kenyaCounties")
+```
+
+## Usage
+
+```{r example, eval = FALSE}
+library(kenyaCounties)
+
+# View datasets
+governors
+countyGCP
+countyPopulation
+
+# Get governor information
+get_governor("Nairobi")
+list_counties_by_party("ODM")
+
+# County statistics
+county_stats()
+```
+
+## Data Sources
+
+- Kenya Electoral Commission
+- Kenya National Bureau of Statistics
+- County Government websites

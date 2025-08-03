@@ -1,0 +1,28 @@
+Package: kenyaCounties
+Type: Package
+Title: Kenya County Government Data
+Version: 0.1.0
+Authors@R: person("Your", "Name", email = "your.email@example.com", role = c("aut", "cre"))
+Description: Provides comprehensive data about Kenya's 47 county governments including 
+    governors, deputy governors, political parties, spatial boundaries, and 
+    administrative information. Includes economic data (Gross County Product) and 
+    population statistics for analysis and visualization.
+URL: https://github.com/yourusername/kenyaCounties
+BugReports: https://github.com/yourusername/kenyaCounties/issues
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
+Depends: 
+    R (>= 3.5.0)
+Imports:
+    dplyr,
+    tibble
+Suggests:
+    sf,
+    ggplot2,
+    leaflet,
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr
