@@ -6,10 +6,10 @@ An R package providing comprehensive data about Kenya's 47 county governments.
 
 ```r
 # Install from GitHub (when available)
-# devtools::install_github("ymutua/kenyaCounties")
+devtools::install_github("ymutua/kenyaCounties")
 
 # Or install locally
-devtools::install_local("path/to/kenyaCounties")
+# devtools::install_local("path/to/kenyaCounties")
 ```
 
 ## Features

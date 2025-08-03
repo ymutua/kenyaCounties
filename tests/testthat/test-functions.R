@@ -63,8 +63,8 @@ test_that("get_county_data works with multiple counties and years", {
   
   # Test with years filter
   year_data <- get_county_data("Nairobi", population = TRUE, years = c(2019, 2020))
-  expect_true("2019" %in% names(year_data))
-  expect_true("2020" %in% names(year_data))
+  expect_true("pop_2019" %in% names(year_data))
+  expect_true("pop_2020" %in% names(year_data))
 })
 
 test_that("function inputs are validated", {

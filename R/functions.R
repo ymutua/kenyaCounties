@@ -74,7 +74,9 @@ county_stats <- function() {
     stop("sf package is required for spatial operations")
   }
   
-  merged_data <- merge(county_boundaries, countyPopulation, by = "county_code")
+  # Remove county_name from countyPopulation to avoid duplication
+  pop_data <- countyPopulation[, !names(countyPopulation) %in% "county_name"]
+  merged_data <- merge(county_boundaries, pop_data, by = "county_code")
   stats <- data.frame(
     total_counties = nrow(merged_data),
     total_area_km2 = sum(merged_data$area_km2, na.rm = TRUE),
@@ -146,8 +148,15 @@ get_county_data <- function(county_name = NULL, county_code = NULL, population =
     if (!is.null(years)) {
       year_cols <- intersect(as.character(years), names(pop_data))
       if (length(year_cols) > 0) {
-        pop_data <- pop_data[, c("county_code", "county_name", year_cols)]
+        pop_data <- pop_data[, c("county_code", year_cols)]
+        # Add pop_ prefix to year columns
+        names(pop_data)[names(pop_data) != "county_code"] <- paste0("pop_", names(pop_data)[names(pop_data) != "county_code"])
       }
+    } else {
+      # Remove county_name to avoid duplication
+      pop_data <- pop_data[, !names(pop_data) %in% "county_name"]
+      # Add pop_ prefix to all columns except county_code
+      names(pop_data)[names(pop_data) != "county_code"] <- paste0("pop_", names(pop_data)[names(pop_data) != "county_code"])
     }
     
     result <- merge(result, pop_data, by = "county_code", all.x = TRUE)
@@ -167,8 +176,15 @@ get_county_data <- function(county_name = NULL, county_code = NULL, population =
     if (!is.null(years)) {
       year_cols <- intersect(as.character(years), names(gcp_data))
       if (length(year_cols) > 0) {
-        gcp_data <- gcp_data[, c("county_code", "county_name", year_cols)]
+        gcp_data <- gcp_data[, c("county_code", year_cols)]
+        # Add gcp_ prefix to year columns
+        names(gcp_data)[names(gcp_data) != "county_code"] <- paste0("gcp_", names(gcp_data)[names(gcp_data) != "county_code"])
       }
+    } else {
+      # Remove county_name to avoid duplication
+      gcp_data <- gcp_data[, !names(gcp_data) %in% "county_name"]
+      # Add gcp_ prefix to all columns except county_code
+      names(gcp_data)[names(gcp_data) != "county_code"] <- paste0("gcp_", names(gcp_data)[names(gcp_data) != "county_code"])
     }
     
     result <- merge(result, gcp_data, by = "county_code", all.x = TRUE)

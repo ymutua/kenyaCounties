@@ -5,12 +5,7 @@
 \alias{countyGCP}
 \title{Kenya Gross County Product Data}
 \format{
-A data frame with variables:
-\describe{
-  \item{county_code}{Numeric county code (1-47)}
-  \item{county_name}{Name of the county}
-  \item{2013, 2014, 2015, ...}{GCP values by year (cleaned from X2013 format)}
-}
+A data frame with economic indicators by year
 }
 \source{
 Kenya National Bureau of Statistics
