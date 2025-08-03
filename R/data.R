@@ -47,16 +47,26 @@
 
 #' Kenya Gross County Product Data
 #'
-#' Economic data showing Gross County Product for Kenya's counties.
+#' Economic data showing Gross County Product for Kenya's counties by year.
 #'
-#' @format A data frame with economic indicators
+#' @format A data frame with variables:
+#' \describe{
+#'   \item{county_code}{Numeric county code (1-47)}
+#'   \item{county_name}{Name of the county}
+#'   \item{2013, 2014, 2015, ...}{GCP values by year (cleaned from X2013 format)}
+#' }
 #' @source Kenya National Bureau of Statistics
 "countyGCP"
 
 #' Kenya County Population Data
 #'
-#' Population statistics for Kenya's counties.
+#' Population statistics for Kenya's counties with yearly data.
 #'
-#' @format A data frame with population data
+#' @format A data frame with variables:
+#' \describe{
+#'   \item{county_code}{Numeric county code (1-47)}
+#'   \item{county_name}{Name of the county}
+#'   \item{2019, 2020, 2021, 2022, 2023}{Population by year}
+#' }
 #' @source Kenya National Bureau of Statistics, Census data
 "countyPopulation"

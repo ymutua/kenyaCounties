@@ -36,12 +36,45 @@ test_that("list_counties_by_party works correctly", {
   expect_equal(nrow(fake_party), 0)
 })
 
+test_that("get_county_population works correctly", {
+  # Test single county
+  nairobi_pop <- get_county_population("Nairobi")
+  expect_s3_class(nairobi_pop, "data.frame")
+  expect_equal(nrow(nairobi_pop), 1)
+  
+  # Test by county code
+  county_47_pop <- get_county_population(county_code = 47)
+  expect_equal(nrow(county_47_pop), 1)
+  
+  # Test all counties
+  all_pop <- get_county_population()
+  expect_equal(nrow(all_pop), 47)
+})
+
+test_that("get_county_data works with multiple counties and years", {
+  # Test single county with population
+  single_data <- get_county_data("Nairobi", population = TRUE)
+  expect_s3_class(single_data, "data.frame")
+  expect_equal(nrow(single_data), 1)
+  
+  # Test multiple counties
+  multi_data <- get_county_data(c("Nairobi", "Mombasa"), population = TRUE)
+  expect_equal(nrow(multi_data), 2)
+  
+  # Test with years filter
+  year_data <- get_county_data("Nairobi", population = TRUE, years = c(2019, 2020))
+  expect_true("2019" %in% names(year_data))
+  expect_true("2020" %in% names(year_data))
+})
+
 test_that("function inputs are validated", {
   # Test NULL inputs work
   expect_no_error(get_governor(NULL, NULL))
   expect_no_error(list_counties_by_party(NULL))
+  expect_no_error(get_county_population(NULL, NULL))
   
   # Test empty string inputs
   expect_equal(nrow(get_governor("")), 0)
   expect_equal(nrow(list_counties_by_party("")), 0)
+  expect_equal(nrow(get_county_population("")), 0)
 })

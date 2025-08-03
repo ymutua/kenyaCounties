@@ -43,6 +43,15 @@ countyPopulation
 get_governor("Nairobi")
 list_counties_by_party("ODM")
 
+# Get population data
+get_county_population("Nairobi")
+get_county_population(county_code = 47)
+
+# Get comprehensive county data
+get_county_data("Nairobi", population = TRUE, GCP = TRUE)
+get_county_data(c("Nairobi", "Mombasa"), population = TRUE, years = 2019:2021)
+get_county_data(county_code = c(1, 2, 47), GCP = TRUE, years = c(2015, 2020))
+
 # County statistics
 county_stats()
 ```
