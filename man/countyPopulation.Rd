@@ -5,7 +5,12 @@
 \alias{countyPopulation}
 \title{Kenya County Population Data}
 \format{
-A data frame with population data
+A data frame with variables:
+\describe{
+  \item{county_code}{Numeric county code (1-47)}
+  \item{county_name}{Name of the county}
+  \item{2019, 2020, 2021, 2022, 2023}{Population by year}
+}
 }
 \source{
 Kenya National Bureau of Statistics, Census data
@@ -14,6 +19,6 @@ Kenya National Bureau of Statistics, Census data
 countyPopulation
 }
 \description{
-Population statistics for Kenya's counties.
+Population statistics for Kenya's counties with yearly data.
 }
 \keyword{datasets}
